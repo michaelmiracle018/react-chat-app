@@ -1,8 +1,10 @@
 import { Account, Client, Databases } from "appwrite";
-export const PROJECT_ID = "649b026c271d06f3ba3d";
-export const DATABASE_ID = "649b03913f0e0499557f";
-export const COLLECTION_ID_MESSAGES = "649b03a95c3c2c9381cd";
+export const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
+export const DATABASE_ID = import.meta.env.VITE_DATABASE_ID;
+export const COLLECTION_ID_MESSAGES = import.meta.env
+	.VITE_COLLECTION_ID_MESSAGES;
 
+console.log();
 const client = new Client();
 
 client

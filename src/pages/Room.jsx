@@ -9,11 +9,17 @@ import { ID, Query, Role, Permission } from "appwrite";
 import { Trash2 } from "react-feather";
 import Header from "../components/Header";
 import { useAuth } from "../utils/AuthContext";
+import moment from "moment";
+// require("dotenv").config();
 
 const Room = () => {
 	const { user } = useAuth();
 	const [messages, setMessages] = useState([]);
 	const [messageBody, setMessageBody] = useState("");
+
+	// const PROJECT_ID = process.env.PROJECT_ID;
+	// const DATABASE_ID = process.env.DATABASE_ID;
+	// const COLLECTION_ID_MESSAGES = process.env.COLLECTION_ID_MESSAGES;
 
 	const getMessages = async () => {
 		const response = await databases.listDocuments(
@@ -112,7 +118,8 @@ const Room = () => {
 									<span>Anonymous user</span>
 								)}
 								<small className="message-timestamp">
-									{new Date(message.$createdAt).toLocaleString()}
+									{/*new Date(message.$createdAt).toLocaleString()*/}
+									{moment(message.$createdAt).format("dddd Do, YYYY")}
 								</small>
 							</p>
 							{message.$permissions.includes(
